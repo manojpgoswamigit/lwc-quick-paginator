@@ -1,0 +1,46 @@
+<!--
+  @description       : 
+  @author            : ManojG
+  @group             : 
+  @last modified on  : 2023-07-25
+  @last modified by  : ManojG
+-->
+<template>
+  <div style="background-color: white; padding-bottom: 25px">
+    <div class="slds-p-around_medium">
+      <table>
+        <thead>
+          <tr>
+            <template for:each={columns} for:item="col">
+              <th key={col.fieldName}>{col.label}</th>
+            </template>
+          </tr>
+        </thead>
+
+        <tbody>
+          <template for:each={accounts} for:item="acc">
+            <tr key={acc.Id}>
+              <td>{acc.name}</td>
+              <td>{acc.accountnumber}</td>
+              <td>{acc.source}</td>
+              <td>{acc.active}</td>
+              <td>{acc.phone}</td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+      <!-- Pagination -->.
+      <!-- align pagination component in the middle not right -->
+      <div class="slds-align_absolute-center slds-size_1-of-1">
+        <template if:true={totalAccounts}>
+          <c-pagination
+            totalrecords={totalAccounts}
+            page-size={pageSize}
+            onpagination={handlePagination}
+          ></c-pagination>
+        </template>
+      </div>
+      <!-- Pagination ends here -->
+    </div>
+  </div>
+</template>
